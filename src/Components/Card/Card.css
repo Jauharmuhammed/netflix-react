@@ -1,0 +1,44 @@
+.card-row {
+  margin-left: 50px;
+  color: #fff;
+}
+
+@media screen and (max-width:480px) {
+  .card-row {
+    margin-left: 10px;
+  }
+}
+
+.cards {
+  display: flex;
+  padding: 20px 20px 20px 0px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.cards::-webkit-scrollbar {
+  display: none;
+}
+
+.cover-large {
+  cursor: pointer;
+  max-height: 180px;
+  margin-top: 15px;
+  margin-right: 10px;
+  transition: all .2s ease-in-out;
+}
+
+
+.cover {
+  cursor: pointer;
+  max-height: 100px;
+  margin-right: 10px;
+  transition: all .2s ease-in-out;
+}
+
+.cover-large:hover,
+.cover:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+  transform-origin: 50% 100%;
+}
