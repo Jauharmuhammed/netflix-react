@@ -11,6 +11,8 @@
 
 .cards {
   display: flex;
+  column-gap: 10px;
+  align-items: center;
   padding: 20px 20px 20px 0px;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -20,25 +22,108 @@
   display: none;
 }
 
-.cover-large {
+.item, 
+.item-large
+{
+  position: relative;
+  min-width: 280px;
+  display: block;
+  flex: 1 1 0px;
+  transition: transform 500ms;
   cursor: pointer;
-  max-height: 180px;
-  margin-top: 15px;
-  margin-right: 10px;
-  transition: all .2s ease-in-out;
+}
+
+.item-large {
+ min-width: 280px;
+}
+
+.item {
+ min-width: 220px;
+}
+
+.cards:focus-within .item, 
+.cards:focus-within .item-large, 
+.cards:hover .item ,
+.cards:hover .item-large 
+{
+ transform: translate(-10%);
 }
 
 
-.cover {
-  cursor: pointer;
-  max-height: 100px;
-  margin-right: 10px;
-  transition: all .2s ease-in-out;
+.item:hover ~ .item,
+.item:focus ~ .item, 
+.item-large:hover ~ .item-large,
+.item-large:focus ~ .item-large 
+{
+ transform: translateX(10%);
 }
 
-.cover-large:hover,
-.cover:hover {
-  transform: scale(1.1);
-  transition: 0.2s;
-  transform-origin: 50% 100%;
+.cards .item:focus,
+.cards .item:hover,
+.cards .item-large:focus,
+.cards .item-large:hover 
+{
+ transform: scale(1.2);
+ z-index: 1;
 }
+
+.cards img{
+  display: block;
+  max-width: 100%;
+ }
+
+ .item[hidden] {
+  display: none;
+ }
+
+.cards .detail{
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  transition: opacity .2s ease-in-out;
+
+}
+
+.cards .detail .title {
+  position: absolute;
+  left:10px;
+  bottom: 10px;
+  font-weight: 500;
+  width: 80%;
+  font-size: 14px;
+  z-index: 2;
+}
+
+.cards .detail .rating {
+  position: absolute;
+  right:10px;
+  bottom: 10px;
+  z-index: 2;
+}
+
+.cards .detail svg {
+  position: absolute;
+  right:10px;
+  top: 10px;
+}
+
+.cards .detail svg:hover {
+  color: red;
+}
+
+.item-large:hover .detail,
+.item-large:focus .detail, 
+.item:hover .detail,
+.item:focus .detail 
+{
+  opacity: 1;
+}
+
+.detail .gradient {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.185), rgba(0, 0, 0, 0.432));
+}
+
